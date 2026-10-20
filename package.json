@@ -1,0 +1,19 @@
+{
+  "name": "downloads",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch src/scss/main.scss src/css/main.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "sass": "^1.105.2"
+  },
+  "dependencies": {
+    "bulma": "^1.0.4"
+  }
+}
