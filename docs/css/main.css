@@ -1,17 +1,22 @@
 @charset "UTF-8";
 :root {
-  --border: #ececf2;
   --sidebar-width: clamp(280px, 22vw, 340px);
-  --sidebar-bg: #ffffff;
-  --page-bg: #ffffff;
-  --text-main: #23262f;
-  --text-soft: #6b7280;
   --pink: #ff6f91;
   --green: #2bac73;
   --orange: #ff914d;
+  --border: #ececf2;
+  --sidebar-bg: #ffffff;
+  --page-bg: #ffffff;
+  --navbar-bg: #f5f5f5;
+  --text-main: #23262f;
+  --text-soft: #6b7280;
   --active-bg: #fff2e8;
   --hover-bg: #f7f7fa;
+  --icon-btn-bg: #f2f3f5;
+  --icon-btn-color: #64748b;
+  --subtitle-color: #607089;
   --overlay: rgba(15, 23, 42, 0.55);
+  --shadow-color: rgba(0, 0, 0, 0.15);
 }
 
 /* Bulma Utilities */
@@ -22655,7 +22660,8 @@ has-background-danger.is-hoverable:active {
   color: #ff914d;
 }
 
-.navbar-end a {
+.navbar-end > a.navbar-item,
+.navbar-end .navbar-link {
   color: #ff914d;
 }
 
@@ -22663,11 +22669,11 @@ has-background-danger.is-hoverable:active {
   position: sticky;
   top: 0;
   z-index: 1000; /* дээр харагдахаар */
-  background-color: #f5f5f5; /* эсвэл өөр өнгө */
+  background-color: var(--navbar-bg);
 }
 
 .app-shadow {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .navbar-brand .image img {
@@ -22706,9 +22712,9 @@ has-background-danger.is-hoverable:active {
   height: 32px;
   border: 0;
   border-radius: 14px;
-  background: #f2f3f5;
+  background: var(--icon-btn-bg);
   font-size: 1rem;
-  color: #64748b;
+  color: var(--icon-btn-color);
   cursor: pointer;
 }
 
@@ -22784,16 +22790,16 @@ has-background-danger.is-hoverable:active {
 }
 
 .app-title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  line-height: 1.08;
-  letter-spacing: -0.04em;
+  font-size: clamp(1.6rem, 3.2vw, 2.25rem);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
   font-weight: 800;
   max-width: 760px;
   margin-bottom: 0.5rem;
 }
 
 .app-line {
-  width: 96px;
+  width: 76px;
   height: 3px;
   border-radius: 999px;
   background: var(--orange);
@@ -22801,12 +22807,51 @@ has-background-danger.is-hoverable:active {
 }
 
 .app-subtitle {
-  color: #607089;
+  color: var(--subtitle-color);
   font-size: clamp(1rem, 2vw, 1.35rem);
   font-weight: bold;
   line-height: 1.6;
   max-width: 760px;
   margin-bottom: 2.5rem;
+}
+
+.image-count-tag {
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  border-radius: 999px;
+}
+.image-count-tag:hover {
+  background-color: rgb(14.3333333333%, 57.3333333333%, 38.3333333333%);
+}
+
+#imageModal .modal-card {
+  width: 640px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+#imageModal .modal-card-head {
+  padding: 1.2rem 1.5rem;
+}
+#imageModal .modal-card-body {
+  padding: 1.5rem;
+}
+#imageModal #slideshowImage {
+  max-height: 52vh;
+  width: auto;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.zoomable-image {
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+  transform-origin: center center;
+  user-select: none;
+}
+
+#fullscreenBtn {
+  border: none;
 }
 
 /* =========================
@@ -22863,7 +22908,7 @@ has-background-danger.is-hoverable:active {
     min-width: unset;
     height: 100vh;
     z-index: 40;
-    background: #fff;
+    background: var(--sidebar-bg);
     border-right: 1px solid var(--border);
     border-bottom: 0;
     padding: 1rem 1rem 2rem;
@@ -22883,9 +22928,8 @@ has-background-danger.is-hoverable:active {
     margin-bottom: 0.75rem;
   }
   .app-title {
-    font-size: 2rem;
+    font-size: 1.65rem;
     line-height: 1.15;
-    letter-spacing: -0.03em;
   }
   .app-subtitle {
     font-size: 1rem;
@@ -22901,7 +22945,7 @@ has-background-danger.is-hoverable:active {
 ========================= */
 @media screen and (max-width: 480px) {
   .app-title {
-    font-size: 1.75rem;
+    font-size: 1.45rem;
   }
   .app-subtitle {
     font-size: 0.95rem;
@@ -22909,3 +22953,149 @@ has-background-danger.is-hoverable:active {
 }
 
 /*# sourceMappingURL=main.css.map */
+
+/* ===== 2.10–2.13: map, overviewText, bookCard, pdfModal, footer =====
+   Эдгээрийг scss-ээс гараар хөрвүүлж нэмсэн. `npm run sass` ажиллуулбал scss-ээс бүхэлд нь дахин үүснэ. */
+.map-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+#svg-container svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: translateX(-4%);
+}
+
+#svg-container svg path {
+  fill: #2bac73;
+  stroke: #fff;
+  stroke-width: 1;
+  cursor: pointer;
+  transition: fill 0.2s;
+}
+
+#svg-container svg path:hover {
+  fill: #ff914d;
+}
+
+.app-overview-text {
+  height: 100%;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.app-txt {
+  font-size: clamp(0.8rem, 0.6vw + 0.55rem, 0.95rem);
+  line-height: 1.75;
+  color: var(--text-main);
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.app-overview-text::-webkit-scrollbar {
+  width: 6px;
+}
+
+.app-overview-text::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 999px;
+}
+
+.book-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-cover {
+  width: 100%;
+  display: block;
+}
+
+.book-description {
+  flex: 1;
+  text-align: justify;
+  height: 220px;
+  min-height: 220px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.book-footer {
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-content.book-pdf-modal-content {
+  width: 88vw;
+  height: 95vh;
+  max-width: none;
+  overflow: hidden;
+}
+
+.book-pdf-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* [ЗАСВАР] sticky navbar (z-index: 1000) нь modal-ийг дарахгүй байхаар */
+.modal {
+  z-index: 2000;
+}
+
+.app-footer {
+  position: relative;
+  z-index: 10;
+  margin-top: 3rem;
+  background: var(--sidebar-bg);
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+}
+
+.app-footer .title {
+  margin-bottom: 1rem;
+  color: var(--text-soft);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+}
+
+.app-footer ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.app-footer li {
+  margin-bottom: 0.5rem;
+}
+
+.app-footer img {
+  height: 1rem;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.app-footer li,
+.app-footer a,
+.app-footer p {
+  font-size: clamp(0.8rem, 1vw, 0.95rem);
+}
+
+.app-footer a {
+  color: var(--text-main);
+  transition: color 0.2s ease;
+}
+
+.app-footer a:hover {
+  color: #2bac73;
+}
+
+@media screen and (max-width: 768px) {
+  .app-shell {
+    height: auto;
+  }
+}
