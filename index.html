@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BUYKA SHOP — Find Your Game</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111'/%3E%3Ctext x='32' y='45' font-family='Arial' font-weight='900' font-size='38' text-anchor='middle' fill='%23fff'%3EB%3C/text%3E%3C/svg%3E">
+<!-- CSS: дараалал чухал -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/overlays.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- ================= HEADER / NAVBAR ================= -->
+<header class="top" id="topbar">
+ <div class="wrap bar">
+  <a href="#home" class="logo"><i>B</i><span>Buyka Shop</span></a>
+  <nav class="nav" id="nav">
+   <a href="#home" data-i18n="nav_home"></a>
+   <a href="#new" data-i18n="nav_new"></a>
+   <a href="#best" data-i18n="nav_best"></a>
+   <a href="#sale" data-i18n="nav_sale"></a>
+   <a href="#shop" data-i18n="nav_shop"></a>
+  </nav>
+  <div class="search" id="search">
+   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+   <input id="q" type="search" data-i18n-ph="search_ph" autocomplete="off">
+  </div>
+  <div class="acts">
+   <button class="ic only-m" id="sBtn" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+   <button class="ic txt" id="langBtn" aria-label="Language">MN</button>
+   <button class="ic" id="themeBtn" aria-label="Theme"></button>
+   <button class="ic" data-a="openCmp" aria-label="Compare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4v16M3 8l4-4 4 4M17 20V4m-4 12 4 4 4-4"/></svg><i class="cnt" id="cmpN">0</i></button>
+   <button class="ic" data-a="openWish" aria-label="Wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><i class="cnt" id="wishN">0</i></button>
+   <button class="ic" data-a="openCart" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><i class="cnt" id="cartN">0</i></button>
+   <button class="ic only-m" id="menuBtn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+ </div>
+</header>
+
+<!-- ================= PAGES (navbar бүр нэг .view) ================= -->
+<main>
+
+<!-- PAGE 1: HOME -->
+<div class="view active" data-view="home">
+ <section class="hero">
+  <img class="hero-img" src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?auto=format&fit=crop&w=1800&q=80" alt="Sneaker" onerror="this.style.display='none'">
+  <div class="wrap"><div class="hero-in">
+   <span class="kick" data-i18n="hero_kick"></span>
+   <h1>RUN YOUR <br>WAY</h1>
+   <p data-i18n="hero_text"></p>
+   <div class="cta"><a class="btn" href="#shop" data-i18n="shop_now"></a><a class="btn ghost" href="#sale" data-i18n="nav_sale"></a></div>
+  </div></div>
+  <div class="brands"><div class="wrap" id="brandStrip"></div></div>
+ </section>
+
+ <div class="wrap"><div class="feats">
+  <div data-i18n="feat1"></div><div data-i18n="feat2"></div><div data-i18n="feat3"></div><div data-i18n="feat4"></div>
+ </div></div>
+
+ <section class="sec"><div class="wrap">
+  <div class="sec-h rev"><div><h2 data-i18n="sec_cats"></h2><p class="sub" data-i18n="sec_cats_s"></p></div><a class="btn ghost sm" href="#shop" data-i18n="view_all"></a></div>
+  <div class="cats" id="catTiles"></div>
+ </div></section>
+
+ <section class="sec" id="recentSec" style="display:none;padding-top:0"><div class="wrap">
+  <div class="sec-h rev"><h2 data-i18n="sec_recent"></h2><button class="btn ghost sm" data-a="clearRecent" data-i18n="clear"></button></div>
+  <div class="grid" id="gridRecent"></div>
+ </div></section>
+</div>
+
+<!-- PAGE 2: NEW ARRIVALS -->
+<div class="view" data-view="new"><section class="sec"><div class="wrap">
+ <div class="sec-h rev"><div><h2 data-i18n="sec_new"></h2><p class="sub" data-i18n="sec_new_s"></p></div><a class="btn ghost sm" href="#shop" data-a="sortpick" data-v="new" data-i18n="view_all"></a></div>
+ <div class="grid" id="gridNew"></div>
+</div></section></div>
+
+<!-- PAGE 3: BEST SELLERS -->
+<div class="view" data-view="best"><section class="sec"><div class="wrap">
+ <div class="sec-h rev"><div><h2 data-i18n="sec_best"></h2><p class="sub" data-i18n="sec_best_s"></p></div><a class="btn ghost sm" href="#shop" data-a="sortpick" data-v="best" data-i18n="view_all"></a></div>
+ <div class="grid" id="gridBest"></div>
+</div></section></div>
+
+<!-- PAGE 4: SPECIAL OFFERS -->
+<div class="view" data-view="sale"><section class="sec"><div class="wrap">
+ <div class="sec-h rev"><div><h2 data-i18n="sec_sale"></h2><p class="sub" data-i18n="sec_sale_s"></p></div><a class="btn ghost sm" href="#shop" data-a="sortpick" data-v="disc" data-i18n="view_all"></a></div>
+ <div class="grid" id="gridSale"></div>
+</div></section></div>
+
+<!-- PAGE 5: SHOP -->
+<div class="view" data-view="shop"><section class="sec"><div class="wrap">
+ <div class="sec-h rev"><div><h2 data-i18n="sec_shop"></h2><p class="sub" data-i18n="sec_shop_s"></p></div></div>
+ <div class="chips" id="catChips"></div>
+ <div class="ctrls">
+  <label><span data-i18n="f_brand"></span><select id="fBrand"></select></label>
+  <label><span data-i18n="f_size"></span><select id="fSize"></select></label>
+  <label><span><span data-i18n="f_price"></span>: <b id="pVal"></b></span><input type="range" id="fPrice" min="60" max="250" step="5" value="250"></label>
+  <label><span data-i18n="f_sort"></span><select id="fSort"></select></label>
+  <button class="btn ghost sm" data-a="reset" data-i18n="reset"></button>
+ </div>
+ <div class="count" id="count"></div>
+ <div class="grid" id="gridShop"></div>
+</div></section></div>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer><div class="wrap">
+ <div class="f-grid">
+  <div><a href="#home" class="logo"><i style="background:#fff;color:#000">B</i><span>Buyka Shop</span></a><p style="margin-top:16px" data-i18n="foot_text"></p></div>
+  <div><h4 data-i18n="f_cat"></h4><ul id="footCats"></ul></div>
+  <div><h4 data-i18n="help"></h4><ul><li><button data-a="sg" data-i18n="size_guide"></button></li><li><button data-a="openCart" data-i18n="cart"></button></li><li><button data-a="openWish" data-i18n="wishlist"></button></li><li><button data-a="openCmp" data-i18n="compare"></button></li></ul></div>
+  <div><h4 data-i18n="news_t"></h4><p data-i18n="news_s"></p>
+   <form class="nl" id="nl"><input type="text" id="nlE" data-i18n-ph="news_ph"><button class="btn" data-i18n="subscribe"></button></form></div>
+ </div>
+ <div class="copy"><span>© 2025 BUYKA SHOP. <span data-i18n="rights"></span></span><span data-i18n="demo"></span></div>
+</div></footer>
+
+<button id="toTop" aria-label="Top">↑</button>
+<div id="toasts"></div>
+
+<!-- ================= OVERLAYS ================= -->
+<div class="layer right" id="cartL" data-layer><aside class="drawer">
+ <div class="d-h"><h3 data-i18n="cart"></h3><button class="x" data-a="close" data-v="cartL">×</button></div>
+ <div class="d-b" id="cartItems"></div>
+ <div class="d-f" id="cartFoot"><div id="cartSum"></div><p class="note" data-i18n="ship_note"></p>
+  <button class="btn full" data-a="checkout" data-i18n="checkout"></button>
+  <button class="btn ghost full" style="margin-top:8px" data-a="clearCart" data-i18n="clear_cart"></button></div>
+</aside></div>
+
+<div class="layer right" id="wishL" data-layer><aside class="drawer">
+ <div class="d-h"><h3 data-i18n="wishlist"></h3><button class="x" data-a="close" data-v="wishL">×</button></div>
+ <div class="d-b" id="wishItems"></div>
+</aside></div>
+
+<div class="layer center" id="cmpL" data-layer><div class="modal">
+ <button class="x" data-a="close" data-v="cmpL">×</button>
+ <div class="m-p"><h3 data-i18n="compare"></h3><div style="overflow:auto" id="cmpBody"></div></div>
+</div></div>
+
+<div class="layer center" id="qvL" data-layer><div class="modal">
+ <button class="x" data-a="close" data-v="qvL">×</button>
+ <div id="qvBody"></div>
+</div></div>
+
+<div class="layer center" id="sgL" data-layer><div class="modal" style="width:min(640px,100%)">
+ <button class="x" data-a="close" data-v="sgL">×</button>
+ <div class="m-p"><h3 data-i18n="size_guide"></h3><div style="overflow:auto" id="sgBody"></div><p class="note" style="margin-top:14px" data-i18n="sg_tip"></p></div>
+</div></div>
+
+<!-- JS: дараалал чухал (data → helpers → state → render → product → cart → main) -->
+<script src="data/translations.js"></script>
+<script src="data/products.js"></script>
+<script src="js/helpers.js"></script>
+<script src="js/state.js"></script>
+<script src="js/render.js"></script>
+<script src="js/product.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+// _variables.scss — дизайны хувьсагчид (css/base.css доторх :root-ийн эх сурвалж)
+
+$font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$wrap: 1320px;
+$header-h: 72px;
+$radius: 14px;
+$pill: 999px;
+
+// breakpoints (css/responsive.css)
+$bp-xl: 1240px;
+$bp-lg: 1100px;
+$bp-nav: 1040px;
+$bp-md: 900px;
+$bp-sm: 640px;
+
+// themes
+$light: (bg: #fff, fg: #0b0b0b, mut: #6b6b6b, card: #f3f3f3, line: #e4e4e4, acc: #0b0b0b, acc-fg: #fff, sale: #d6001c, hdr: rgba(255, 255, 255, .9));
+$dark: (bg: #0b0b0b, fg: #f4f4f4, mut: #a3a3a3, card: #171717, line: #2a2a2a, acc: #fff, acc-fg: #0b0b0b, sale: #ff4d5e, hdr: rgba(11, 11, 11, .9));
+
+@mixin theme($map) {
+  @each $k, $v in $map {
+    --#{$k}: #{$v};
+  }
+}
+
+// Хэрэглээ:
+// :root { @include theme($light); }
+// [data-theme=dark] { @include theme($dark); }
